@@ -1,17 +1,13 @@
-import sys
+n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
 
+moves = 0
+balance = 0
+for i in range(n):
+    diff = b[i] - a[i]
+    balance += diff
+    if diff > 0:
+        moves += diff
 
-def main():
-    data = sys.stdin.read().split()
-    n = int(data[0])
-    a = list(map(int, data[1:n + 1]))
-    b = list(map(int, data[n + 1:2 * n + 1]))
-
-    if sum(a) != sum(b):
-        print(-1)
-    else:
-        print(sum(bi - ai for ai, bi in zip(a, b) if bi > ai))
-
-
-if __name__ == "__main__":
-    main()
+print(moves if balance == 0 else -1)
